@@ -31,8 +31,29 @@ const getAddress = async (address) => {
     }
 }
 
+const getCode = async (code) => {
+    try {
+        const result = await web3.getCode(code);
+        return result;
+    } catch (error) {
+        console.log({ error: error.message });
+    }
+}
+
+const getBalance = async (balance) => {
+    try {
+        const result = await web3.getBalance(balance);
+        return result;
+    } catch (error) {
+        console.log({ error: error.message });
+    }
+}
+
+
 module.exports = {
     getTransactionReceipt,
     getBlock,
-    getAddress
+    getAddress,
+    getCode,
+    getBalance
 }

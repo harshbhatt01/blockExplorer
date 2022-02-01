@@ -30,8 +30,28 @@ const getAddress = async () => {
     }
 }
 
+const getCode = async (code) => {
+    try {
+        const result = await web3.eth.getCode(code);
+        return result;
+    } catch (error) {
+        
+    }
+}
+
+const getBalance = async (balance) => {
+    try {
+        const result = await web3.eth.getBalance(balance);
+        return result;
+    } catch (error) {
+        
+    }
+}
+
 module.exports = {
     getTransactionReceipt, 
     getBlock,
-    getAddress
+    getAddress,
+    getCode,
+    getBalance
 }
