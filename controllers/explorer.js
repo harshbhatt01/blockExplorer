@@ -11,14 +11,14 @@ const getTransactionReceipt = async (txHash) => {
     }
 }
 
-const getBlock = async (block) => {
+/*const getBlock = async (block) => {
     try {
         const count = await web3.getBlock(block);
         return count;
     } catch (error) {
         console.log({ error: error.message });
     }
-}
+}*/
 
 const getAddress = async (address) => {
     try {
@@ -31,14 +31,14 @@ const getAddress = async (address) => {
     }
 }
 
-const getCode = async (code) => {
+/*const getCode = async (code) => {
     try {
         const result = await web3.getCode(code);
         return result;
     } catch (error) {
         console.log({ error: error.message });
     }
-}
+}*/
 
 const getBalance = async (balance) => {
     try {
@@ -52,8 +52,6 @@ const getBalance = async (balance) => {
 
 module.exports = {
     getTransactionReceipt,
-    getBlock,
     getAddress,
-    getCode,
     getBalance
 }
