@@ -1,6 +1,8 @@
 const web3 = require('../utils/web3');
 const axios = require('../utils/axios');
 
+
+
 const getTransactionReceipt = async (txHash) => {
     try {
         const receipt = await web3.getTransactionReceipt(txHash);
@@ -11,14 +13,6 @@ const getTransactionReceipt = async (txHash) => {
     }
 }
 
-/*const getBlock = async (block) => {
-    try {
-        const count = await web3.getBlock(block);
-        return count;
-    } catch (error) {
-        console.log({ error: error.message });
-    }
-}*/
 
 const getAddress = async (address) => {
     try {
@@ -31,14 +25,30 @@ const getAddress = async (address) => {
     }
 }
 
-/*const getCode = async (code) => {
+
+const getBlock = async (block) => {
     try {
-        const result = await web3.getCode(code);
-        return result;
+        const result = await axios.getBlock(
+            `https://api-rinkeby.etherscan.io/api?module=block&action=getblockreward&blockno=${block}&apikey=${process.env.ETHERSCAN_API}`
+        );
+    return result;
+    } catch (error) {
+        console.log({ error: error.message });
+    }
+}
+
+/*
+const getContractAddress = async (address) => {
+    try {
+        const result = await axios.getData(
+            `https://api-rinkeby.etherscan.io/api?module=stats&action=tokensupply&contractaddress=${address}&apikey=${process.env.ETHERSCAN_API}`
+        );
+    return result;
     } catch (error) {
         console.log({ error: error.message });
     }
 }*/
+
 
 const getBalance = async (balance) => {
     try {
@@ -52,6 +62,7 @@ const getBalance = async (balance) => {
 
 module.exports = {
     getTransactionReceipt,
+    getBlock,
     getAddress,
     getBalance
 }

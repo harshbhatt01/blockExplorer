@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const { getTransactionReceipt, getBlock, getAddress, getCode } = require('../controllers/explorer');
+const { getTransactionReceipt, getBlock, getAddress, getCode, getContractAddress } = require('../controllers/explorer');
 const { getBalance } = require('../utils/web3');
 
 
@@ -20,6 +20,7 @@ router.get('/block/:block', async (req, res) => {
     try {
         const { block } = req.params;
         const result = await getBlock(block);
+        console.log({ result});
         return res.status(200).json({ result });
     } catch (error) {
         console.log({ error: error.message });
@@ -38,16 +39,16 @@ router.get('/address/:address', async (req, res) => {
     }
 });
 
-router.get('/code/:code', async (req, res) => {
+/*router.get('/contractaddress/:contractaddress', async (req, res) => {
     try {
-        const { code } = req.params;
-        const result = await getCode(code);
+        const { address } = req.params;
+        const result = await getContractAddress(address);
         return res.status(200).json({ result });
     } catch (error) {
         console.log({ error: error.message });
         return res.status(500).json({ error: error.message });
     }
-});
+});*/
 
 router.get('/balance/:balance', async (req, res) => {
     try {
@@ -59,4 +60,5 @@ router.get('/balance/:balance', async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 });
+
 module.exports = router;
