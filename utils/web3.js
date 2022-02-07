@@ -47,7 +47,16 @@ const getBalance = async (balance) => {
         
     }
 }
-
+const getTotalPages = async (address) => {
+    try {
+        const count = await web3.eth.getTransactionCount(address);
+        const result =Math.ceil(count/10)
+        console.log({ result });
+        return result;
+    } catch (error) {
+        console.log({ error: error.message });
+    }
+}
 module.exports = {
     getTransactionReceipt, 
     getBlock,
