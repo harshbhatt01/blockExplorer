@@ -16,7 +16,7 @@ const getTransactionReceipt = async (txHash) => {
 
 const getAddress = async (address) => {
     try {
-        const result = await axios.getData(
+        const result = await axios.getBlock(
             `https://api-rinkeby.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${process.env.ETHERSCAN_API}`
         );
         return result;

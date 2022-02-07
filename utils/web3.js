@@ -10,15 +10,6 @@ const getTransactionReceipt = async (txHash) => {
         console.log({ error: error.message });
     }
 }
-/*const getBlock = async (block) => {
-     try {
-         const count = await web3.eth.getBlock(block);
-         return count;
-     } catch (error) {
-         console.log({ error: error.message });
-         
-     }
-}*/
 
 const getAddress = async () => {
     try {
@@ -29,15 +20,6 @@ const getAddress = async () => {
         console.log({ error: error.message });
     }
 }
-
-/*const getCode = async (code) => {
-    try {
-        const result = await web3.eth.getCode(code);
-        return result;
-    } catch (error) {
-        
-    }
-}*/
 
 const getBalance = async (balance) => {
     try {
