@@ -62,5 +62,6 @@ module.exports = {
     getBlock,
     getAddress,
     getCode,
-    getBalance
+    getBalance,
+    getTotalPages
 }
